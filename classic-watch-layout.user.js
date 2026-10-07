@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Classic Watch Layout
 // @namespace    https://github.com/davidluttrull/youtube-classic-watch-layout
-// @version      1.0.0
+// @version      1.0.1
 // @description  Puts the description and comments back under the video and recommendations back in the right column.
 // @author       David Luttrull
 // @license      MIT
@@ -97,6 +97,9 @@
     ).forEach(p => p.setAttribute('visibility', 'ENGAGEMENT_PANEL_VISIBILITY_HIDDEN'));
 
     showComments();
+
+    // The player keeps the new layout's width until something resizes it.
+    setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
   }
 
   function run() {

@@ -37,7 +37,7 @@ The new layout is controlled by YouTube experiment flags (`web_watch_split_scrol
 - The script runs after the page loads, so you may see the new layout for a moment before it switches.
 - Comments load as you scroll down to them, the same as in the classic layout.
 - I tested this by forcing the new layout's flags on in a browser that didn't have it, not on an account YouTube enrolled directly. YouTube may set yours up differently.
-- I've only tested it in Enhancer for YouTube. The userscript header is new and hasn't been tried in Tampermonkey or Violentmonkey yet.
+- I've tested it in Enhancer for YouTube and in Tampermonkey on Chrome, but not in Violentmonkey.
 - YouTube changes its internals often. If the script stops working, the flag names or element names have probably changed. Please open an issue.
 
 ## License
