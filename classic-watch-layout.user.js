@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Classic Watch Layout
 // @namespace    https://github.com/davidluttrull/youtube-classic-watch-layout
-// @version      1.0.1
+// @version      1.0.2
 // @description  Puts the description and comments back under the video and recommendations back in the right column.
 // @author       David Luttrull
 // @license      MIT
@@ -31,6 +31,8 @@
     'web_side_rail_dismissible_panels',
     'web_side_rail_default_dismissed_panels',
     'web_side_rail_with_border',
+    // Hides the theater mode button once the side rail is off.
+    'disable_theater_mode',
   ];
 
   function patchFlags() {
@@ -74,6 +76,11 @@
       if (typeof f._setProperty === 'function') f._setProperty('splitScroll', false);
       else f.splitScroll = false;
     } catch (e) { console.warn('[classic layout]', e); }
+
+    // Re-check whether the player should offer the theater mode button.
+    try {
+      if (typeof f.setPlayerTheaterMode_ === 'function') f.setPlayerTheaterMode_();
+    } catch (e) {}
 
     // Belt and braces: strip the reflected attributes the new CSS keys off.
     ['split-scroll', 'using-fixed-panel', 'fixed-default-panels', 'show-fixed-side-menu',
